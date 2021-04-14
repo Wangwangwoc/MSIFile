@@ -43,9 +43,7 @@ class MsiFile:
             msidll.MsiCloseHandle(handle)
 
     def __del__(self):
-        for handle in self.__handle_list__:
-            msidll.MsiCloseHandle(handle)
-
+        self.close()
     @storeHandle
     def OpenDataBase(self,file_path):
         hDataBase = ctypes.c_ulong(0)
